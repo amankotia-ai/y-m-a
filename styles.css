@@ -163,6 +163,10 @@ a {
   list-style: none;
 }
 
+.project-service {
+  zoom: 0.8;
+}
+
 :is(.project-service, .hero-link) {
   --indicator-size: 24px;
   --dot-size: 9px;
