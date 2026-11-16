@@ -167,6 +167,7 @@ a {
   --indicator-size: 24px;
   --dot-size: 9px;
   position: relative;
+  border-radius: 999px;
   background: #f0f0f0;
   padding-block: 4px;
   padding-inline: calc(var(--indicator-size) + 8px) 8px;
@@ -186,6 +187,9 @@ a {
   inset-block: 0;
   inset-inline-start: 0;
   inline-size: var(--indicator-size);
+  block-size: var(--indicator-size);
+  margin-block: auto;
+  border-radius: 50%;
   background: var(--indicator-color);
 }
 
