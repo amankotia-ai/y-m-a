@@ -67,7 +67,6 @@ a {
 .hero {
   display: grid;
   justify-items: start;
-  gap: 40px;
   padding-block: calc(var(--masthead-to-heading) - var(--wordmark-height)) 60px;
 }
 
@@ -98,12 +97,6 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.hero-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
 .previews,
@@ -164,12 +157,9 @@ a {
 }
 
 .project-service {
-  zoom: 0.8;
-}
-
-:is(.project-service, .hero-link) {
   --indicator-size: 24px;
   --dot-size: 9px;
+  zoom: 0.8;
   position: relative;
   border-radius: 999px;
   background: #f0f0f0;
@@ -181,13 +171,13 @@ a {
   letter-spacing: 0;
 }
 
-:is(.project-service, .hero-link)::before,
-:is(.project-service, .hero-link)::after {
+.project-service::before,
+.project-service::after {
   content: "";
   position: absolute;
 }
 
-:is(.project-service, .hero-link)::before {
+.project-service::before {
   inset-block: 0;
   inset-inline-start: 0;
   inline-size: var(--indicator-size);
@@ -197,7 +187,7 @@ a {
   background: var(--indicator-color);
 }
 
-:is(.project-service, .hero-link)::after {
+.project-service::after {
   inset-block-start: 50%;
   inset-inline-start: calc((var(--indicator-size) - var(--dot-size)) / 2);
   inline-size: var(--dot-size);
@@ -207,8 +197,7 @@ a {
   transform: translateY(-50%);
 }
 
-.project-service--brand,
-.hero-link--reference {
+.project-service--brand {
   --indicator-color: #eea2f5;
   --dot-color: #701837;
 }
@@ -218,8 +207,7 @@ a {
   --dot-color: #534100;
 }
 
-.project-service--film,
-.hero-link--previews {
+.project-service--film {
   --indicator-color: #ff721e;
   --dot-color: #681b23;
 }
@@ -237,24 +225,6 @@ a {
 .project-service--motion {
   --indicator-color: #c7b7f7;
   --dot-color: #48367c;
-}
-
-.hero-link {
-  --indicator-size: 28px;
-  --dot-size: 10px;
-  padding-block: 6px;
-  padding-inline: calc(var(--indicator-size) + 8px) 8px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.hero-link:hover {
-  background: #e5e5e5;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .studio-intro {
