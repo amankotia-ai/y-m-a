@@ -12,6 +12,7 @@
   background: #fff;
   font-family: Inter, Arial, sans-serif;
   --gutter: 32px;
+  --footer-background: #b7dcf7;
   --wordmark-width: 148px;
   --wordmark-ratio: calc(1637 / 252);
   --wordmark-target-height: 24px;
@@ -36,16 +37,19 @@ a {
   outline-offset: 4px;
 }
 
-.page,
+.page > .masthead,
+.page > main,
 .footer-content {
   max-inline-size: 1600px;
   margin-inline: auto;
-  padding: var(--gutter);
+  padding-inline: var(--gutter);
   padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
   padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
 }
 
 .page {
+  background: #fff;
+  padding-block-end: var(--gutter);
   padding-block-start: calc(var(--gutter) + env(safe-area-inset-top, 0px));
 }
 
@@ -270,13 +274,14 @@ a {
 
 .site-footer {
   color: #000;
-  background: #b7dcf7;
+  background: var(--footer-background);
 }
 
 .footer-content {
   display: grid;
   justify-items: start;
   gap: clamp(96px, 12vw, 176px);
+  padding-block: var(--gutter);
   padding-block-end: calc(var(--gutter) + env(safe-area-inset-bottom, 0px));
 }
 
@@ -308,25 +313,10 @@ a {
   --mark-width: clamp(124px, 18vw, 250px);
 }
 
-@media (pointer: coarse) {
-  .site-footer {
-    --footer-edge-height: 12px;
-  }
-
-  .footer-content {
-    padding-block-end: calc(var(--gutter) + env(safe-area-inset-bottom, 0px) - var(--footer-edge-height));
-  }
-
-  /* Safari samples the sticky edge color for the area behind its bottom bar. */
-  .site-footer::after {
-    content: "";
-    display: block;
-    position: sticky;
-    inset-block-end: 0;
-    block-size: var(--footer-edge-height);
-    background-color: inherit;
-    pointer-events: none;
-  }
+/* WebKit extends the document background into areas outside the page. */
+:root.footer-in-view,
+.footer-in-view body {
+  background-color: var(--footer-background);
 }
 
 @media (width < 810px) {
