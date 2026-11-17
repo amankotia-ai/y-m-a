@@ -36,10 +36,17 @@ a {
   outline-offset: 4px;
 }
 
-.page {
+.page,
+.footer-content {
   max-inline-size: 1600px;
   margin-inline: auto;
   padding: var(--gutter);
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.page {
+  padding-block-start: calc(var(--gutter) + env(safe-area-inset-top, 0px));
 }
 
 .wordmark {
@@ -270,9 +277,7 @@ a {
   display: grid;
   justify-items: start;
   gap: clamp(96px, 12vw, 176px);
-  max-inline-size: 1600px;
-  margin-inline: auto;
-  padding: var(--gutter);
+  padding-block-end: calc(var(--gutter) + env(safe-area-inset-bottom, 0px));
 }
 
 .footer-contact {
@@ -303,6 +308,27 @@ a {
   --mark-width: clamp(124px, 18vw, 250px);
 }
 
+@media (pointer: coarse) {
+  .site-footer {
+    --footer-edge-height: 12px;
+  }
+
+  .footer-content {
+    padding-block-end: calc(var(--gutter) + env(safe-area-inset-bottom, 0px) - var(--footer-edge-height));
+  }
+
+  /* Safari samples the sticky edge color for the area behind its bottom bar. */
+  .site-footer::after {
+    content: "";
+    display: block;
+    position: sticky;
+    inset-block-end: 0;
+    block-size: var(--footer-edge-height);
+    background-color: inherit;
+    pointer-events: none;
+  }
+}
+
 @media (width < 810px) {
   :root {
     --gutter: 20px;
@@ -310,7 +336,7 @@ a {
   }
 
   .page {
-    padding-block-start: 28px;
+    padding-block-start: calc(28px + env(safe-area-inset-top, 0px));
   }
 
   .reveal-copy {
