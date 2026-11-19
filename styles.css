@@ -14,7 +14,7 @@
   --gutter: 32px;
   --footer-background: #b7dcf7;
   --wordmark-width: 148px;
-  --wordmark-ratio: calc(1637 / 252);
+  --wordmark-ratio: calc(2082 / 324);
   --wordmark-target-height: 24px;
   --wordmark-height: max(var(--wordmark-target-height), calc(var(--wordmark-width) / var(--wordmark-ratio)));
   --masthead-to-heading: 316.8px;
@@ -59,19 +59,9 @@ a {
   min-block-size: var(--wordmark-target-height);
 }
 
-.wordmark-art {
-  position: relative;
+.wordmark img {
   display: block;
-  aspect-ratio: var(--wordmark-ratio);
-  overflow: hidden;
-}
-
-.wordmark-art img {
-  /* Frame the visible artwork within the transparent PNG. */
-  position: absolute;
-  inset-inline-start: calc(-100% * 268 / 1637);
-  inset-block-start: calc(-100% * 236 / 252);
-  inline-size: calc(100% * 2172 / 1637);
+  inline-size: 100%;
   block-size: auto;
 }
 
